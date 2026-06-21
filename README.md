@@ -182,21 +182,7 @@ Purpose
 Calculate duration
 
 ```
-Duration
-
-=
-
-DATEDIFF
-
-(
-
-SECOND,
-
-StartTime,
-
-GETDATE()
-
-)
+Duration = DATEDIFF (SECOND, StartTime, GETDATE() )
 ```
 
 ---
@@ -253,11 +239,11 @@ Parameter Mapping
 Possible Errors
 
 ```
-_ Connection Failed
-Table Not Found
-Column Missing
-Timeout
-Permission Denied
+* Connection Failed
+* Table Not Found
+* Column Missing
+* Timeout
+* Permission Denied
 ```
 
 ---
@@ -317,10 +303,10 @@ Redirect No Match
 Possible Errors
 
 ```
-Duplicate Business Keys
-NULL BusinessEntityID
-Datatype mismatch
-Connection failure
+* Duplicate Business Keys
+* NULL BusinessEntityID
+* Datatype mismatch
+* Connection failure
 ```
 
 ---
@@ -358,9 +344,9 @@ CreatedDate DATETIME DEFAULT GETDATE()
 Possible Errors
 
 ```
-Variable not found
-Datatype mismatch
-Overflow
+* Variable not found
+* Datatype mismatch
+* Overflow
 ```
 
 ---
@@ -370,12 +356,12 @@ Overflow
 Possible Errors
 
 ```
-PK violation
-Duplicate Key
-Datatype mismatch
-String truncation
-NULL violation
-Identity issue
+* PK violation
+* Duplicate Key
+* Datatype mismatch
+* String truncation
+* NULL violation
+* Identity issue
 ```
 
 ---
@@ -413,11 +399,11 @@ CREATE TABLE Destination_Error
 Possible Errors
 
 ```
-Deadlock
-Timeout
-Lock Escalation
-Table Missing
-Permission Denied
+* Deadlock
+* Timeout
+* Lock Escalation
+* Table Missing
+* Permission Denied
 ```
 
 ---
