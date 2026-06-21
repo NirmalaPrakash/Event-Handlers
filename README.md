@@ -161,9 +161,7 @@ User::LastUpdatedValue
 
 ## OnPreExecute
 
-Purpose
-
-Capture package start time
+Purpose: Capture package start time
 
 Expression
 
@@ -177,9 +175,7 @@ User::StartTime = GETDATE()
 
 ## OnPostExecute
 
-Purpose
-
-Calculate duration
+Purpose: Calculate duration
 
 ```
 Duration = DATEDIFF (SECOND, StartTime, GETDATE() )
@@ -315,9 +311,7 @@ Error Output
 
 ```
 Redirect Row
-
 ↓
-
 Lookup_Error
 ```
 
@@ -420,11 +414,11 @@ Use TRY CATCH
         FROM EmailAddress D
         INNER JOIN EmailAddress_Updated S
         ON D.BusinessEntityID=S.BusinessEntityID
-    COMMIT
+    COMMIT TRAN
   END TRY
 
 BEGIN CATCH
-  ROLLBACK
+  ROLLBACK TRAN
   
   INSERT INTO ErrorLog (PackageName, TaskName, ErrorCode, ErrorDescription, ExecutionTime, Status)
   VALUES('IncrementalLoad.dtsx', 'Update Task', ERROR_NUMBER(), ERROR_MESSAGE(), GETDATE(), 'Failed')
@@ -456,11 +450,11 @@ BEGIN TRY
       INSERT (BusinessEntityID, EmailAddressID, EmailAddress, rowguid, ModifiedDate)
       VALUES (S.BusinessEntityID, S.EmailAddressID, S.EmailAddress, S.rowguid, S.ModifiedDate);
   
-  COMMIT
+  COMMIT TRAN
 END TRY
 
 BEGIN CATCH
-  ROLLBACK
+  ROLLBACK TRAN
 
   INSERT INTO ErrorLog (PackageName, TaskName, ErrorCode, ErrorDescription, ExecutionTime, Status)
   VALUES ('IncrementalLoad.dtsx', 'MERGE', ERROR_NUMBER(), ERROR_MESSAGE(), GETDATE(), 'Failed')
